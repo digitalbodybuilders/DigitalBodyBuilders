@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -6,9 +5,10 @@ import { useState, useEffect } from "react";
 export default function Home() {
   const images = [
     "/images/cover1.jpg",
-    "/images/cover2.jpg",
     "/images/feature1.jpg",
     "/images/feature5.jpg",
+    "/images/wksp6.jpg",
+
   ];
   const [currentImage, setCurrentImage] = useState(0);
 
