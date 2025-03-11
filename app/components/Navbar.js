@@ -10,7 +10,6 @@ export default function Navbar() {
           <div className="d-flex">
             <a className="nav-link px-3 custom-nav-link" href="/about">About</a>
             <a className="nav-link px-3 custom-nav-link" href="/services">Services</a>
-            <a className="nav-link px-3 custom-nav-link" href="/models">Programs</a>
             <a className="nav-link px-3 custom-nav-link" href="/gallery">Gallery</a>
             <a className="nav-link px-3 custom-nav-link" href="/contact">Contact</a>
           </div>

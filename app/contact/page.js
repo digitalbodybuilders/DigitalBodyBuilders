@@ -12,7 +12,8 @@ export default function Contact() {
           <h3>Get In Touch</h3>
           <p>We would love to hear from you! Feel free to reach out to us using any of the following methods:</p>
           <ul>
-            <li><strong>Phone:</strong> +880-1234-567890</li>
+            <li><strong>Phone:</strong> Md. Nasir Uddin Babu (MD)</li>
+            <li><strong>Phone:</strong>+8801716248817</li>
             <li><strong>Email:</strong> info@digitalbodybuilder.com</li>
             <li><strong>Address:</strong> Boliarpur Bus Station, Savar, Dhaka, Bangladesh</li>
             <li><strong>Working Hours:</strong> Mon - Fri, 9:00 AM - 6:00 PM</li>
