@@ -68,7 +68,7 @@ export default function Home() {
           <p className="lead">
             Building the Future of Vehicles with Innovation & Precision
           </p>
-          <a href="/models" className="btn btn-primary btn-lg">
+          <a href="/services" className="btn btn-primary btn-lg">
             Explore Models
           </a>
         </div>
