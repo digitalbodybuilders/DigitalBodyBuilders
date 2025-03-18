@@ -236,17 +236,18 @@ export default function About() {
             </div>
 
             <style jsx>{`
-                .about-banner {
-                    background-image: url('/images/wksp4.jpg');
-                    background-size: cover;
-                    background-position: center;
-                    height: 100vh;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
-                }
+                    .about-banner {
+                        background-image: url('/images/wksp4.jpg');
+                        background-size: cover;
+                        background-position: center;
+                        height: 90vh;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
+                    }
+
 
                 .animated-title {
                     animation: fadeIn 2s ease-in-out;
@@ -271,7 +272,7 @@ export default function About() {
                 }
 
                 .container-fluid {
-                    padding: 0;
+                    padding: 10;
                     margin: 0;
                 }
 
