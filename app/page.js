@@ -48,12 +48,12 @@ export default function Home() {
       {/* Hero Section */}
       <header
         className="hero-section text-white text-center d-flex align-items-center justify-content-center"
-        style={{
-          backgroundImage: "url(/images/car-banner.jpg)",
-          height: "80vh",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
+        // style={{
+        //   backgroundImage: "url(/images/cover2.jpg)",
+        //   height: "80vh",
+        //   backgroundSize: "cover",
+        //   backgroundPosition: "center",
+        // }}
       >
         <div
           style={{
@@ -62,6 +62,7 @@ export default function Home() {
             backgroundPosition: "center",
             padding: "150px",
             borderRadius: "10px",
+            marginTop:"20px"
           }}
         >
           <h1 className="display-3">We make your dream come true</h1>

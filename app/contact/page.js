@@ -20,7 +20,7 @@ export default function Contact() {
           </ul>
         </div>
 
-        <div className="col-md-6">
+        {/* <div className="col-md-6">
           <h3>Send Us a Message</h3>
           <form>
             <div className="mb-3">
@@ -37,7 +37,7 @@ export default function Contact() {
             </div>
             <button type="submit" className="btn btn-primary">Submit</button>
           </form>
-        </div>
+        </div> */}
       </div>
 
       <div className="mt-5">

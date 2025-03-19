@@ -117,13 +117,12 @@
 
 
 
-
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
 
-export default function Login() {
+export default function Login({ setIsLoggedIn }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [userType, setUserType] = useState("user"); // Default is user
@@ -146,6 +145,9 @@ export default function Login() {
       // Store username and type in localStorage
       localStorage.setItem("username", data.username);
       localStorage.setItem("userType", data.type); // Store the type (user/admin)
+
+      // Update the parent component's state
+      setIsLoggedIn(true);
 
       // Redirect based on user type
       if (data.type === "admin") {

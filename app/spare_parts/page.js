@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState } from "react";
@@ -62,8 +61,8 @@ export default function SpareParts() {
   const handleClose = () => setSelectedPart(null);
 
   return (
-    <div className="container my-5">
-      <h1 className="text-center mb-4 text-primary" style={{ paddingTop: "50px" }}>Spare Parts</h1>
+    <div className="container-fluid" style={{ paddingTop: "80px",paddingLeft: "20px", paddingRight: "20px"  }}>
+      <h1 className="text-center text-primary mb-4">Spare Parts</h1>
       <div className="row">
         {spareParts.map((part, index) => (
           <div key={index} className="col-md-6 col-lg-4 mb-4">
@@ -107,7 +106,7 @@ export default function SpareParts() {
       </div>
 
       {selectedPart && (
-        <Modal show={true} onHide={handleClose} centered>
+        <Modal show={true} onHide={handleClose} centered size="lg">
           <Modal.Header closeButton>
             <Modal.Title>{selectedPart.title}</Modal.Title>
           </Modal.Header>
@@ -125,6 +124,58 @@ export default function SpareParts() {
           </Modal.Footer>
         </Modal>
       )}
+
+      <style jsx>{`
+        .container-fluid {
+          padding: 0;
+        }
+
+        .card {
+          cursor: pointer;
+        }
+
+        .card:hover {
+          transform: scale(1.05);
+          box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .spare-part-card {
+          height: 100%;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-img-top {
+          height: 250px;
+          object-fit: cover;
+        }
+
+        .card-body {
+          padding: 15px;
+        }
+
+        .description {
+          display: -webkit-box;
+          WebkitLineClamp: 3;
+          WebkitBoxOrient: "vertical";
+          overflow: hidden;
+          textOverflow: "ellipsis";
+        }
+
+        .see-more {
+          color: blue;
+          cursor: pointer;
+        }
+
+        .see-more:hover {
+          text-decoration: underline;
+        }
+
+        @media (min-width: 1200px) {
+          .card-img-top {
+            height: 300px;
+          }
+        }
+      `}</style>
     </div>
   );
 }
