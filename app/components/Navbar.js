@@ -8,7 +8,7 @@ export default function Navbar() {
       <div className="container d-flex justify-content-between align-items-center">
         <a className="navbar-brand text-white custom-brand d-flex align-items-center" href="/">
           <img 
-            src="/images/logo/logo3.png" 
+            src="/images/logo3.png" 
             alt="Digital Bodybuilders" 
             className="me-2" 
             style={{ height: "100px", width: "auto" }}

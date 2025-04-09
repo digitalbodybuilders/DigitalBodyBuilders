@@ -9,7 +9,7 @@ export default function Footer() {
         {/* Left Section */}
         <div className="col-md-4 d-flex flex-column align-items-center text-center">
           <img
-            src="/images/logo/logo3.png"
+            src="/images/logo3.png"
             alt="Company Logo"
             style={{ height: "150px", width: "auto", marginBottom: "1rem" }}
           />
