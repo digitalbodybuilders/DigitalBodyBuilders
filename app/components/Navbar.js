@@ -20,6 +20,7 @@ export default function Navbar() {
           <a className="nav-link px-3 custom-nav-link" href="/services">Services</a>
           <a className="nav-link px-3 custom-nav-link" href="/spare_parts">Spare Parts</a>
           <a className="nav-link px-3 custom-nav-link" href="/gallery">Gallery</a>
+          <a className="nav-link px-3 custom-nav-link" href="/gallery_upload">Gallery Upload</a>
           <a className="nav-link px-3 custom-nav-link" href="/contact">Contact</a>
           <a className="nav-link px-3 custom-nav-link" href="/login">Login</a>
           <a className="nav-link px-3 custom-nav-link" href="/register">Register</a>

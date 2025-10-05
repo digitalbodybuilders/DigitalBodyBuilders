@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState } from "react";
@@ -57,12 +58,86 @@ export default function SpareParts() {
     },
   ];
 
+  // NOTE: fixed the typo "part23.jpeg" -> "parts23.jpeg"
+  const sparePartImages = [
+    "/images/spare_parts/parts10.jpeg",
+    "/images/spare_parts/parts11.jpeg",
+    "/images/spare_parts/parts12.jpeg",
+    "/images/spare_parts/parts13.jpeg",
+    "/images/spare_parts/parts15.jpeg",
+    "/images/spare_parts/parts16.jpeg",
+    "/images/spare_parts/parts17.jpeg",
+    "/images/spare_parts/parts18.jpeg",
+    "/images/spare_parts/parts19.jpeg",
+    "/images/spare_parts/parts20.jpeg",
+    "/images/spare_parts/parts21.jpeg",
+    "/images/spare_parts/parts22.jpeg",
+    "/images/spare_parts/parts23.jpeg", // <-- corrected
+    "/images/spare_parts/parts24.jpeg",
+    "/images/spare_parts/parts25.jpeg",
+    "/images/spare_parts/parts26.jpeg",
+    "/images/spare_parts/parts27.jpeg",
+    "/images/spare_parts/parts28.jpeg",
+    "/images/spare_parts/parts29.jpeg",
+    "/images/spare_parts/parts30.jpeg",
+    "/images/spare_parts/parts31.jpeg",
+    "/images/spare_parts/parts32.jpeg",
+  ];
+
   const handleShow = (part) => setSelectedPart(part);
   const handleClose = () => setSelectedPart(null);
 
+  // lightweight SVG placeholder (data URI) so there is always something to show
+  const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300'><rect width='100%' height='100%' fill='#f0f0f0'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#888' font-family='Arial' font-size='18'>Image not found</text></svg>`;
+  const placeholder = `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+
+  // handle image load errors: try common fixes then fall back to placeholder
+  const handleImgError = (e) => {
+    const img = e.target;
+    const attempts = parseInt(img.dataset.attempt || "0", 10);
+    const original = img.dataset.original || img.src;
+
+    if (!img.dataset.original) img.dataset.original = original;
+
+    // 1) try swapping .jpeg <-> .jpg once
+    if (attempts === 0) {
+      if (/\.jpeg$/i.test(original)) {
+        img.dataset.attempt = "1";
+        img.src = original.replace(/\.jpeg$/i, ".jpg");
+        console.warn("Image failed — trying .jpg:", original);
+        return;
+      }
+      if (/\.jpg$/i.test(original)) {
+        img.dataset.attempt = "1";
+        img.src = original.replace(/\.jpg$/i, ".jpeg");
+        console.warn("Image failed — trying .jpeg:", original);
+        return;
+      }
+    }
+
+    // 2) try to fix common filename typos (e.g. /part23. -> /parts23.)
+    if (attempts <= 1) {
+      if (/\/part23\./.test(original)) {
+        img.dataset.attempt = "2";
+        img.src = original.replace("/part23.", "/parts23.");
+        console.warn("Image failed — trying fix for part23 typo:", original);
+        return;
+      }
+    }
+
+    // 3) final fallback to placeholder
+    img.dataset.attempt = String(attempts + 1);
+    img.src = placeholder;
+    console.warn("Image failed — using placeholder for:", original);
+  };
+
   return (
-    <div className="container-fluid" style={{ paddingTop: "80px",paddingLeft: "20px", paddingRight: "20px"  }}>
+    <div
+      className="container-fluid"
+      style={{ paddingTop: "80px", paddingLeft: "20px", paddingRight: "20px" }}
+    >
       <h1 className="text-center text-primary mb-4">Spare Parts</h1>
+
       <div className="row">
         {spareParts.map((part, index) => (
           <div key={index} className="col-md-6 col-lg-4 mb-4">
@@ -77,6 +152,7 @@ export default function SpareParts() {
                 className="card-img-top"
                 alt={part.title}
                 style={{ height: "250px", objectFit: "cover" }}
+                onError={handleImgError}
               />
               <div className="card-body">
                 <h5 className="card-title text-primary">{part.title}</h5>
@@ -105,6 +181,33 @@ export default function SpareParts() {
         ))}
       </div>
 
+      {/* 🧠 New Section: Spare Parts Images */}
+      <h2 className="text-center text-secondary mt-5 mb-4">
+        Spare Parts Sample
+      </h2>
+
+      <div className="row justify-content-center">
+        {sparePartImages.map((img, index) => (
+          <div
+            key={index}
+            className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 d-flex justify-content-center"
+          >
+            <img
+              src={img}
+              alt={`Spare Part ${index + 1}`}
+              className="rounded shadow-sm"
+              style={{
+                width: "400px",
+                height: "300px",
+                objectFit: "cover",
+                borderRadius: "10px",
+              }}
+              onError={handleImgError}
+            />
+          </div>
+        ))}
+      </div>
+
       {selectedPart && (
         <Modal show={true} onHide={handleClose} centered size="lg">
           <Modal.Header closeButton>
@@ -116,11 +219,14 @@ export default function SpareParts() {
               alt={selectedPart.title}
               className="img-fluid mb-3"
               style={{ borderRadius: "8px" }}
+              onError={handleImgError}
             />
             <p>{selectedPart.fullDescription}</p>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>Close</Button>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
           </Modal.Footer>
         </Modal>
       )}

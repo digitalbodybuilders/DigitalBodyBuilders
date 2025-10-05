@@ -1,73 +1,46 @@
-
 "use client";
 import { useState } from "react";
 
-export default function Gallery() {
+export default function GalleryUpload() {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [images, setImages] = useState([]); // start with empty list
 
-  const images = [
-    "/images/gallery/bus45.jpeg",
-    "/images/gallery/bus46.jpeg",
-    "/images/gallery/bus47.jpeg",
-    "/images/gallery/bus48.jpeg",
-    "/images/gallery/bus49.jpeg",
-    "/images/gallery/bus1.jpeg",
-    "/images/gallery/bus2.jpeg",
-    "/images/gallery/bus3.jpeg",
-    "/images/gallery/bus4.jpeg",
-    "/images/gallery/bus5.jpeg",
-    "/images/gallery/bus6.jpeg",
-    "/images/gallery/bus7.jpeg",
-    "/images/gallery/bus8.jpeg",
-    "/images/gallery/bus9.jpeg",
-    "/images/gallery/bus10.jpeg",
-    "/images/gallery/bus11.jpeg",
-    "/images/gallery/bus12.jpeg",
-    "/images/gallery/bus13.jpeg",
-    "/images/gallery/bus14.jpeg",
-    "/images/gallery/bus15.jpeg",
-    "/images/gallery/bus16.jpeg",
-    "/images/gallery/bus17.jpeg",
-    "/images/gallery/bus18.jpeg",
-    "/images/gallery/bus19.jpeg",
-    "/images/gallery/bus20.jpeg",
-    "/images/gallery/bus21.jpeg",
-    "/images/gallery/bus22.jpeg",
-    "/images/gallery/bus23.jpeg",
-    "/images/gallery/bus24.jpeg",
-    "/images/gallery/bus25.jpeg",
-    "/images/gallery/bus26.jpeg",
-    "/images/gallery/bus27.jpeg",
-    "/images/gallery/bus28.jpeg",
-    "/images/gallery/bus7.jpeg",
-    "/images/gallery/bus12.jpeg",
-    "/images/gallery/bus30.jpeg",
-    "/images/gallery/bus31.jpeg",
-    "/images/gallery/bus32.jpeg",
-    "/images/gallery/bus33.jpeg",
-    "/images/gallery/bus34.jpeg",
-    "/images/gallery/bus35.jpeg",
-    "/images/gallery/bus36.jpeg",
-    "/images/gallery/bus37.jpeg",
-    "/images/gallery/bus38.jpeg",
-    "/images/gallery/bus39.jpeg",
-    "/images/gallery/bus38.jpeg",
-    "/images/gallery/bus30.jpeg",
-    "/images/gallery/bus41.jpeg",
-    "/images/gallery/bus42.jpeg",
-    "/images/gallery/bus43.jpeg",
-    "/images/gallery/bus44.jpeg"
-
-  ];
+  // Handle file uploads
+  const handleImageUpload = (event) => {
+    const files = Array.from(event.target.files);
+    const newImages = files.map((file) => URL.createObjectURL(file));
+    setImages((prev) => [...prev, ...newImages]); // append uploaded images
+  };
 
   return (
-    <div className="container-fluid p-0" style={{  marginTop: "80px",marginLeft: "20px", marginRight: "20px" }}>
+    <div
+      className="container-fluid p-0"
+      style={{ marginTop: "80px", marginLeft: "20px", marginRight: "20px" }}
+    >
       <h2 className="text-center text-primary my-5">Our Gallery</h2>
+
+      {/* Upload button */}
+      <div className="text-center mb-4">
+        <input
+          type="file"
+          accept="image/*"
+          multiple
+          onChange={handleImageUpload}
+        />
+      </div>
+
       <div className="row">
         {images.map((image, index) => (
           <div key={index} className="col-6 col-md-4 col-lg-3 mb-4">
-            <div className="gallery-image-box" onClick={() => setSelectedImage(image)}>
-              <img src={image} alt={`Gallery Image ${index + 1}`} className="img-fluid rounded" />
+            <div
+              className="gallery-image-box"
+              onClick={() => setSelectedImage(image)}
+            >
+              <img
+                src={image}
+                alt={`Gallery Image ${index + 1}`}
+                className="img-fluid rounded"
+              />
             </div>
           </div>
         ))}
@@ -75,10 +48,19 @@ export default function Gallery() {
 
       {selectedImage && (
         <div className="popup" onClick={() => setSelectedImage(null)}>
-          <div className="popup-content" onClick={(e) => e.stopPropagation()}>
-            <span className="close" onClick={() => setSelectedImage(null)}>&times;</span>
+          <div
+            className="popup-content"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <span className="close" onClick={() => setSelectedImage(null)}>
+              &times;
+            </span>
             <div className="popup-box">
-              <img src={selectedImage} alt="Selected" className="popup-image" />
+              <img
+                src={selectedImage}
+                alt="Selected"
+                className="popup-image"
+              />
             </div>
           </div>
         </div>
@@ -105,7 +87,6 @@ export default function Gallery() {
           padding: 5px;
         }
 
-        /* Adjusting the pop-up to take full screen */
         .popup {
           position: fixed;
           top: 0;
@@ -154,7 +135,6 @@ export default function Gallery() {
           color: #ff5050;
         }
 
-        /* Making gallery responsive */
         @media (max-width: 767px) {
           .img-fluid {
             height: 150px;

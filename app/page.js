@@ -155,7 +155,7 @@ export default function Home() {
       <section className="container text-center my-5">
         <h2 className="mb-4 text-success">Our Featured Models</h2>
         <div className="row">
-          {["bus1.png", "car1.jpg", "bus3.jpg"].map((model, index) => (
+          {["bus47.jpeg", "bus42.jpeg", "bus45.jpeg"].map((model, index) => (
             <div key={index} className="col-md-4">
               <div className="model-box">
                 <img
@@ -163,7 +163,7 @@ export default function Home() {
                   className="img-fluid model-image"
                   alt={`Car Model ${index + 1}`}
                 />
-                <h4 className="mt-3">Model {String.fromCharCode(88 + index)}</h4>
+                {/* <h4 className="mt-3">Model {String.fromCharCode(88 + index)}</h4> */}
               </div>
             </div>
           ))}
@@ -174,7 +174,7 @@ export default function Home() {
       <section className="bg-light py-5 text-center">
         <h2 className="text-danger">Why Choose Us?</h2>
         <p className="lead">
-          Innovation, Sustainability, and Performance in Every Car
+          Innovation, Sustainability, and Performance in Every Vehicle
         </p>
       </section>
 

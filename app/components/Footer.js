@@ -29,18 +29,18 @@ export default function Footer() {
         {/* Middle Section */}
         <div className="col-md-4 text-center">
           <h4 className="text-primary">Contact Information</h4>
-          <p><strong>Phone:</strong> (123) 456-7890</p>
-          <p><strong>Email:</strong> contact@company.com</p>
+          <p><strong>Phone:</strong> +8801842-867096 , +8801715866271</p>
+          <p><strong>Email:</strong>digitalbodybuilders@gmail.com</p>
         </div>
 
         {/* Right Section */}
         <div className="col-md-4 text-center">
           <h4 className="text-primary">Quick Links</h4>
           <ul className="list-unstyled">
-            <li><a href="#home" className="text-light" style={{ textDecoration: "none" }}>Home</a></li>
-            <li><a href="#services" className="text-light" style={{ textDecoration: "none" }}>Services</a></li>
-            <li><a href="#about" className="text-light" style={{ textDecoration: "none" }}>About</a></li>
-            <li><a href="#contact" className="text-light" style={{ textDecoration: "none" }}>Contact</a></li>
+            <li> <a className="nav-link px-3 custom-nav-link" href="/about">About</a></li>
+            <li> <a className="nav-link px-3 custom-nav-link" href="/gallery">Gallery</a></li>
+            <li> <a className="nav-link px-3 custom-nav-link" href="/contact">Contact</a></li>
+
           </ul>
         </div>
       </div>
